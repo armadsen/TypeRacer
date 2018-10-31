@@ -254,6 +254,7 @@
 			buildConfigurationList = AC9EA4AF21382559007A6ECD /* Build configuration list for PBXNativeTarget "Typist" */;
 			buildPhases = (
 				C1E3AE53EB23AE9647AA402C /* [CP] Check Pods Manifest.lock */,
+				9D36BC05218A147C005C4B88 /* Swift Lint */,
 				AC9EA49921382553007A6ECD /* Sources */,
 				AC9EA49A21382553007A6ECD /* Frameworks */,
 				AC9EA49B21382553007A6ECD /* Resources */,
@@ -341,6 +342,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Typist/Pods-Typist-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9D36BC05218A147C005C4B88 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		C1E3AE53EB23AE9647AA402C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
