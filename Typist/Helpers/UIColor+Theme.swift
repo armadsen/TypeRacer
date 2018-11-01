@@ -8,8 +8,7 @@
 
 import UIKit
 
-extension UIColor
-{
+extension UIColor {
     static let darkColor = UIColor.rgb(red: 0, green: 52, blue: 89)
     static let darkBlue = UIColor.rgb(red: 0, green: 52, blue: 89)
     static let lightBlue = UIColor.rgb(red: 0, green: 168, blue: 232)
@@ -21,10 +20,8 @@ extension UIColor
     static let bronze = UIColor.rgb(red: 161, green: 105, blue: 40)
 }
 
-enum Appearance
-{
-    static func titleFont(with size: CGFloat) -> UIFont
-    {
+enum Appearance {
+    static func titleFont(with size: CGFloat) -> UIFont {
         return UIFont(name: "Montserrat-SemiBold", size: size)!
     }
 }

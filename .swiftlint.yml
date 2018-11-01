@@ -1,2 +1,15 @@
 disabled_rules:
-    - line_length
+  - vertical_whitespace
+  - nesting
+  - line_length
+  
+excluded:
+  - Pods
+  
+line_length: 
+  ignores_comments: true
+  
+#whitelist_rules:
+#    - trailing_whitespace
+#    - opening_brace
+#    - trailing_newline

@@ -9,14 +9,12 @@
 import Foundation
 import CoreData
 
-class CoreDataManager
-{
+class CoreDataManager {
     static let shared = CoreDataManager()
-    
-    func saveContext(context: NSManagedObjectContext = CoreDataManager.shared.mainContext) throws
-    {
+
+    func saveContext(context: NSManagedObjectContext = CoreDataManager.shared.mainContext) throws {
         var error: Error?
-        
+
         context.performAndWait {
             do {
                 try context.save()
@@ -24,28 +22,25 @@ class CoreDataManager
                 error = saveError
             }
         }
-        
+
         if let error = error { throw error }
     }
-    
-    lazy var container: NSPersistentContainer =
-        {
+
+    lazy var container: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "WpmResult")
             container.loadPersistentStores(completionHandler: { (_, error) in
-                
-                if let error = error
-                {
+
+                if let error = error {
                     fatalError("Failed to load persistence store: \(error)")
                 }
             })
-            
+
             container.viewContext.automaticallyMergesChangesFromParent = true
-            
+
             return container
     }()
-    
-    var mainContext: NSManagedObjectContext
-    {
+
+    var mainContext: NSManagedObjectContext {
         return container.viewContext
     }
 }

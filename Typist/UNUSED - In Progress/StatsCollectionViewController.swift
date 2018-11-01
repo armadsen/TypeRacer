@@ -8,34 +8,21 @@
 
 import UIKit
 
-class StatsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout
-{
-    
-    
-    override func viewDidLoad()
-    {
+class StatsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-    
+
         setupCollectionView()
     }
-    
-    private func setupCollectionView()
-    {
+
+    private func setupCollectionView() {
         collectionView.backgroundColor = .darkColor
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.alwaysBounceHorizontal = false
     }
-    
-    
+
+
 }
-
-
-
-
-
-
-
-
-
-

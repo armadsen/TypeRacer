@@ -336,8 +336,8 @@ open class Chart: UIControl {
             let segments = Chart.segmentLine(series.data as ChartLineSegment, zeroLevel: series.colors.zeroLevel)
 
             segments.forEach({ segment in
-                let scaledXValues = scaleValuesOnXAxis( segment.map { $0.x } )
-                let scaledYValues = scaleValuesOnYAxis( segment.map { $0.y } )
+                let scaledXValues = scaleValuesOnXAxis( segment.map { $0.x })
+                let scaledYValues = scaleValuesOnYAxis( segment.map { $0.y })
 
                 if series.line {
                     drawLine(scaledXValues, yValues: scaledYValues, seriesIndex: index)
@@ -727,7 +727,7 @@ open class Chart: UIControl {
         var indexes: [Int?] = []
 
         for series in self.series {
-            var index: Int? = nil
+            var index: Int?
             let xValues = series.data.map({ (point: ChartPoint) -> Double in
                 return point.x })
             let closest = Chart.findClosestInValues(xValues, forValue: x)

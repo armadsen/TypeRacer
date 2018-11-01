@@ -9,10 +9,8 @@
 import Foundation
 import CoreData
 
-extension WpmResult
-{
-    convenience init(wpm: Int32, timestamp: Date = Date(), context: NSManagedObjectContext = CoreDataManager.shared.mainContext)
-    {
+extension WpmResult {
+    convenience init(wpm: Int32, timestamp: Date = Date(), context: NSManagedObjectContext = CoreDataManager.shared.mainContext) {
         self.init(context: context)
         self.wpm = wpm
         self.timestamp = timestamp

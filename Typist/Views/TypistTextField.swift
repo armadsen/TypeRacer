@@ -8,13 +8,11 @@
 
 import UIKit
 
-class TypistTextField: UITextField
-{
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool
-    {
+class TypistTextField: UITextField {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false
     }
-    
+
     //Have to figure out how to disable force touch on textField...
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
 //    {

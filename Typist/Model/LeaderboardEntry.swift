@@ -8,13 +8,11 @@
 
 import Foundation
 
-struct LeaderboardEntry
-{
+struct LeaderboardEntry {
     var name: String?
     var wpm: NSNumber?
-    
-    init(dictionary: [String: Any])
-    {
+
+    init(dictionary: [String: Any]) {
         self.name = dictionary["name"] as? String
         self.wpm = dictionary["wpm"] as? NSNumber
     }

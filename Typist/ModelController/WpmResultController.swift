@@ -9,39 +9,36 @@
 import Foundation
 import CoreData
 
-class WpmResultController
-{
+class WpmResultController {
     private(set) var wpmResults = [WpmResult]()
-    
-    func createNewResult(wpm: Int32)
-    {
+
+    func createNewResult(wpm: Int32) {
         let result = WpmResult(wpm: wpm, context: CoreDataManager.shared.mainContext)
-        
+
         do {
-            
+
             try CoreDataManager.shared.saveContext()
             self.wpmResults.append(result)
-            
+
         } catch let error {
             print(error)
         }
     }
-    
-    func fetchWpmResults(completion: (() -> ())? = nil)
-    {
+
+    func fetchWpmResults(completion: (() -> Void)? = nil) {
         let backgroundMoc = CoreDataManager.shared.container.newBackgroundContext()
-        
+
         let fetchRequest = NSFetchRequest<WpmResult>(entityName: "WpmResult")
         fetchRequest.returnsObjectsAsFaults = false
-        
+
         do {
-            
+
             let results = try backgroundMoc.fetch(fetchRequest)
             self.wpmResults = results
             completion?()
-            
+
         } catch let fetchError {
-            NSLog(fetchError as! String)
+            NSLog("\(fetchError)")
         }
     }
 }

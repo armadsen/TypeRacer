@@ -8,43 +8,38 @@
 
 import UIKit
 
-class ProgressView: UIView
-{
+class ProgressView: UIView {
     var path: UIBezierPath?
-    
-    let carImageView: UIImageView =
-    {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "car-avatar")?.withRenderingMode(.alwaysTemplate)
-        iv.contentMode = .scaleAspectFit
-        iv.tintColor = .lightBlue
-        
-        return iv
+
+    let carImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "car-avatar")?.withRenderingMode(.alwaysTemplate)
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .lightBlue
+
+        return imageView
     }()
-    
-    override init(frame: CGRect)
-    {
+
+    override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
-        
+
         setupImageView()
     }
-    
-    func animateAvatar(index: Int, count: Int)
-    {
+
+    func animateAvatar(index: Int, count: Int) {
         let completePercentage = CGFloat(Double(index) / Double(count))
         let width = self.frame.width - 60
         let progressValue = completePercentage * width
 
         imageViewLeftAnchor?.constant = progressValue
-        
+
         UIView.animate(withDuration: 0.15) {
             self.layoutIfNeeded()
         }
     }
-    
-    override func draw(_ rect: CGRect)
-    {
+
+    override func draw(_ rect: CGRect) {
         let lineWidth: CGFloat = 1
         path = UIBezierPath()
         path?.move(to: CGPoint(x: 0, y: self.bounds.maxY - lineWidth))
@@ -53,30 +48,17 @@ class ProgressView: UIView
         UIColor.white.setStroke()
         path?.stroke()
     }
-    
+
     var imageViewLeftAnchor: NSLayoutConstraint?
-    
-    private func setupImageView()
-    {
+
+    private func setupImageView() {
         addSubview(carImageView)
         carImageView.anchor(top: nil, left: nil, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingRight: 0, paddingBottom: 13, width: 60, height: 60)
         imageViewLeftAnchor = carImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0)
         imageViewLeftAnchor?.isActive = true
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
