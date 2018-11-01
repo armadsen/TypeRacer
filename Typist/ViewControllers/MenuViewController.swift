@@ -31,59 +31,22 @@ class MenuViewController: UIViewController, UIViewControllerTransitioningDelegat
         return label
     }()
 
-    let playButton: UIButton = {
+    private func createMenuButton(title: String, fontSize: CGFloat = 36, action: Selector) -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle("Play", for: .normal)
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
         button.setTitleColor(.white, for: .normal)
-        button.dropShadow()
-        button.titleLabel?.font = Appearance.titleFont(with: 36)
+        button.enableDropShadow()
+        button.titleLabel?.font = Appearance.titleFont(with: fontSize)
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(handlePlay), for: .touchUpInside)
-
         return button
-    }()
+    }
 
-    let practiceButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Practice", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.dropShadow()
-        button.titleLabel?.font = Appearance.titleFont(with: 32)
-        button.addTarget(self, action: #selector(handlePractice), for: .touchUpInside)
-        button.layer.cornerRadius = 12
-        button.layer.masksToBounds = true
-
-        return button
-    }()
-
-    let statsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.dropShadow()
-
-        button.setTitle("Stats", for: .normal)
-        button.titleLabel?.font = Appearance.titleFont(with: 36)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.numberOfLines = 2
-        button.layer.cornerRadius = 12
-        button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(handleStats), for: .touchUpInside)
-
-        return button
-    }()
-
-    let leaderboardButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.titleLabel?.font = Appearance.titleFont(with: 18)
-        button.setTitle("Leaderboard", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.dropShadow()
-        button.layer.cornerRadius = 12
-        button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(handleLeaderboard), for: .touchUpInside)
-
-        return button
-    }()
+    lazy var playButton: UIButton = self.createMenuButton(title: "Play", action: #selector(handlePlay))
+    lazy var practiceButton: UIButton = self.createMenuButton(title: "Practice", fontSize: 32, action: #selector(handlePractice))
+    lazy var statsButton: UIButton = self.createMenuButton(title: "Stats", action: #selector(handleStats))
+    lazy var leaderboardButton: UIButton = self.createMenuButton(title: "Leaderboard", fontSize: 18, action: #selector(handleLeaderboard))
 
     override func viewDidLayoutSubviews() {
         playButton.setGradientButton(colorOne: UIColor.lightBlue.cgColor, colorTwo: UIColor.lightPurple.cgColor, startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))

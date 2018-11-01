@@ -158,7 +158,7 @@ extension UIImageView {
 }
 
 extension UIView {
-    func dropShadow() {
+    func enableDropShadow() {
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
@@ -166,7 +166,7 @@ extension UIView {
         self.layer.shadowRadius = 1
     }
 
-    func noShadow() {
+    func disableDropShadow() {
         self.layer.shadowColor = UIColor.clear.cgColor
         self.layer.shadowOpacity = 0
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
